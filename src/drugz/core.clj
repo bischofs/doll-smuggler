@@ -61,19 +61,32 @@
            no)))))
   )
 
+;;-----------FUNCTION filter-by-index  --------------------
+;; custom filter function to map the indexes to the dolls vector for printing
+(defn filter-by-index [seq idxs]
+  (let [idxs (into #{} idxs)]
+    (reduce (fn [h [char idx]]
+              (if (contains? idxs idx)
+                (conj h char) h))
+            [] (partition 2 (interleave seq (iterate inc 0))))))
+
 ;;-----------FUNCTION print-results --------------------
 ;; Takes in the doll list and the max weight and runs them 
 ;; through the dynamic algorithm while mapping the indexes 
 ;; of the output to the doll names, computes the total weight and prints out the results
+
 (defn print-results [dolls max]
 
  (let [[value i] (find-weights  (-> dolls count dec) max)
         names (map (comp :name dolls) i)]
     (println "total value:" value)
     (println "total weight:" (reduce + (map (comp :weight dolls) i)))
+    (println "packed dolls:\n")
+    (def pout(filter-by-index dolls i))
+    (print-table pout)
+
     )
- (println "packed dolls:\n")
- (print-table dolls)
+
 
 )
 
