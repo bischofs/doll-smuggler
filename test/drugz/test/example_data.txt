@@ -1,15 +1,3 @@
-# drugz
-
-This is a solution to the "Teddy Bear delivery" combinatorial optimization problem also known as the knapsack problem in clojure.
-
-requires leinengen to run and test
-
-## Usage
-
-example_data.txt is located in /test/drugz/test/
-
-which holds this data
-
 max weight: 400
 
 available dolls:
@@ -37,15 +25,3 @@ eddie       7    20
 tory       18    12
 sally       4    50
 babe       30    10
-
-To run the program type:  lein run  in the top directory
-
-To run some tests I wrote type:   lein test  in the top directory
-
-
-
-
-
-
-
-
